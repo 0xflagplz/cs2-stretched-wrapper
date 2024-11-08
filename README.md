@@ -4,7 +4,7 @@ A simple wrapper that automatically manages CS2 resolution settings and restores
 
 # MUST DO
 ```
-# CHANGE THE CS2 DIR IN SOURCE CODE
+# CHANGE THE CS2 SHORTCUT URL PATH IN SOURCE CODE
 ```
 
 ## Features
@@ -19,6 +19,7 @@ A simple wrapper that automatically manages CS2 resolution settings and restores
 
 - GCC compiler installed
 - Steam must be running before launching wrapper
+- CS2 shortcut URL file (typically found in Steam installation folder)
 
 ## Default Resolution Values
 
@@ -27,12 +28,14 @@ A simple wrapper that automatically manages CS2 resolution settings and restores
 
 ## Important Note
 
-If your monitor's native resolution is not 1920x1080, you'll need to modify the resolution values in the source code before compiling:
+Before compiling, you must modify the CS2 shortcut URL path in the source code:
 
 1. Open the source file
-2. Locate the resolution variables
-3. Update them to match your setup
+2. Locate the CS2 shortcut URL path variable
+3. Update it to match your Steam installation (typically found in `Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo.url`)
 4. Compile the modified code
+
+Additionally, if your monitor's native resolution is not 1920x1080, you'll need to modify the resolution values as well.
 
 ## Usage
 
@@ -54,6 +57,6 @@ If your monitor's native resolution is not 1920x1080, you'll need to modify the 
 ## Building from Source
 
 ```
-# CHANGE THE CS2 DIR IN SOURCE CODE
+# CHANGE THE CS2 SHORTCUT URL PATH IN SOURCE CODE
 CMD> .\compile.bat
 ```

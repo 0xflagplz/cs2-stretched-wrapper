@@ -68,41 +68,30 @@ int main() {
     // Step 1: Change resolution to 1440x1080
     ChangeResolution(1440, 1080);
 
-    // Step 2: Launch the game
-    STARTUPINFO si = {0};
-    PROCESS_INFORMATION pi = {0};
-    si.cb = sizeof(si);
+    // Step 2: Launch the game using the URL shortcut
+    HINSTANCE result = ShellExecute(
+        NULL,
+        "open",
+        "C:\\Users\\<username>\\Desktop\\Counter-Strike 2.url",
+        NULL,
+        NULL,
+        SW_SHOW
+    );
 
-    LPCSTR gamePath = "E:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\game\\bin\\win64\\cs2.exe";
-
-    if (!CreateProcess(
-            NULL,
-            (LPSTR)gamePath,
-            NULL,
-            NULL,
-            FALSE,
-            0,
-            NULL,
-            NULL,
-            &si,
-            &pi)) {
-        printf("Failed to launch the game. Error code: %ld\n", GetLastError());
+    if ((intptr_t)result <= 32) {  // ShellExecute returns a value <= 32 on failure
+        printf("Failed to launch the game. Error code: %d\n", (int)(intptr_t)result);
         RestoreResolution();
         return 1;
     }
 
     printf("Game launched successfully.\n");
+    
+    // Give the game some time to start
+    Sleep(5000);  // Wait 5 seconds
 
-    // Step 3: Wait for the game process to exit
-    WaitForSingleObject(pi.hProcess, INFINITE);
+    printf("Restoring resolution...\n");
 
-    // Step 4: Clean up
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
-
-    printf("Game exited. Restoring resolution...\n");
-
-    // Step 5: Restore resolution to 1920x1080
+    // Step 3: Restore resolution to 1920x1080
     RestoreResolution();
 
     return 0;
