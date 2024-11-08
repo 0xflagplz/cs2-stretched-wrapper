@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <shellapi.h>
+#include <tlhelp32.h>
 
 void ChangeResolution(int width, int height) {
     DEVMODE devMode;
@@ -35,7 +36,35 @@ void RestoreResolution() {
     }
 }
 
+BOOL IsSteamRunning() {
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (snapshot == INVALID_HANDLE_VALUE) {
+        return FALSE;
+    }
+
+    PROCESSENTRY32 processEntry;
+    processEntry.dwSize = sizeof(processEntry);
+
+    if (Process32First(snapshot, &processEntry)) {
+        do {
+            if (_stricmp(processEntry.szExeFile, "steam.exe") == 0) {
+                CloseHandle(snapshot);
+                return TRUE;
+            }
+        } while (Process32Next(snapshot, &processEntry));
+    }
+
+    CloseHandle(snapshot);
+    return FALSE;
+}
+
 int main() {
+    // Check if Steam is running first
+    if (!IsSteamRunning()) {
+        printf("Steam is not running. Please start Steam first.\n");
+        return 1;
+    }
+
     // Step 1: Change resolution to 1440x1080
     ChangeResolution(1440, 1080);
 
