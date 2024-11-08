@@ -32,7 +32,7 @@ Before compiling, you must modify the CS2 shortcut URL path in the source code:
 
 1. Open the source file
 2. Locate the CS2 shortcut URL path variable
-3. Update it to match your Steam installation (typically found in `Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo.url`)
+3. Update it to match your Steam installation (typically found in `C:\Users\<username>\Desktop\Counter-Strike 2.url`)
 4. Compile the modified code
 
 Additionally, if your monitor's native resolution is not 1920x1080, you'll need to modify the resolution values as well.
