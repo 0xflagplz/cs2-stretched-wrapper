@@ -4,7 +4,7 @@ A simple wrapper that automatically manages CS2 resolution settings and restores
 
 # MUST DO
 ```
-# CHANGE THE CS2 SHORTCUT URL PATH IN SOURCE CODE
+# Make sure you have .url shortcut on your desktop for cs2
 ```
 
 ## Features
