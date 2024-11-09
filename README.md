@@ -7,14 +7,6 @@ A simple wrapper that automatically manages CS2 resolution settings and restores
 # Make sure you have .url shortcut on your desktop for cs2
 ```
 
-## Features
-
-- Automatically sets CS2 to 4:3 borderless window mode (1440x1080 by default)
-- Monitors CS2 process and restores original resolution when game exits
-- No installation required - single standalone executable
-- No dependencies
-- Non-persistent
-
 ## Prerequisites
 
 - GCC compiler installed
@@ -27,13 +19,9 @@ A simple wrapper that automatically manages CS2 resolution settings and restores
 - Default source resolution: 1920x1080 (16:9)
 
 ## Important Note
-
-Before compiling, you must modify the CS2 shortcut URL path in the source code:
-
 1. Open the source file
 2. Locate the CS2 shortcut URL path variable
-3. Update it to match your Steam installation (typically found in `C:\Users\<username>\Desktop\Counter-Strike 2.url`)
-4. Compile the modified code
+3. Compile the modified code
 
 Additionally, if your monitor's native resolution is not 1920x1080, you'll need to modify the resolution values as well.
 
@@ -41,7 +29,7 @@ Additionally, if your monitor's native resolution is not 1920x1080, you'll need 
 
 1. Compile the source code using GCC
 2. Launch Steam
-3. Run the compiled wrapper
+3. Run the compiled wrapper instead of starting cs2
 4. The wrapper will:
    - Check if Steam is running
    - Change to 4:3 resolution
