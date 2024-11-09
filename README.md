@@ -13,7 +13,7 @@ A simple wrapper that automatically manages CS2 resolution settings and restores
 - Monitors CS2 process and restores original resolution when game exits
 - No installation required - single standalone executable
 - No dependencies
-- Non-persistent - leaves no traces after execution
+- Non-persistent
 
 ## Prerequisites
 
